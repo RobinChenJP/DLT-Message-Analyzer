@@ -120,8 +120,8 @@ jobs:
 
     # Artifacts
     - name: Artifacts
-      uses: ncipollo/release-action@v1
+      uses: actions/upload-artifact@v2
       with:
-        artifacts: ..\build
-        token: ${{ github.token }}
+        name: build-artifacts
+        path: ..\build
         generateReleaseNotes: true
