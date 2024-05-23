@@ -93,7 +93,7 @@ jobs:
 
     # Create build directory
     - name: Creation of the ".\build" directory
-      run: mkdir ..\build
+      run: mkdir .\build
       shell: cmd
       working-directory: .\
 
@@ -102,26 +102,25 @@ jobs:
       run: |
         cmake ..\${{ github.event.repository.name }}\ "-GCodeBlocks - NMake Makefiles JOM" "-DCMAKE_BUILD_TYPE:STRING=Release" "-DCMAKE_PREFIX_PATH:STRING=${{ github.workspace }}/Qt6/Qt/6.5.0/msvc2019_64" "-DQT_QMAKE_EXECUTABLE:STRING=${{ github.workspace }}/Qt6/Qt/6.5.0/msvc2019_64/bin/qmake.exe"
       shell: cmd
-      working-directory: ..\build
+      working-directory: .\build
 
     #List files in build folder
     - name: List files in build folder
       run: |
         dir
       shell: cmd
-      working-directory: ..\build
+      working-directory: .\build
 
     # Build of the project
     - name: Jom
       run: |
         jom.exe -j8
       shell: cmd
-      working-directory: ..\build
+      working-directory: .\build
 
     # Artifacts
     - name: Artifacts
       uses: actions/upload-artifact@v2
       with:
         name: build-artifacts
-        path: ..\build
-        generateReleaseNotes: true
+        path: .\build
