@@ -117,3 +117,11 @@ jobs:
         jom.exe -j8
       shell: cmd
       working-directory: ..\build
+
+    # Artifacts
+    - name: Artifacts
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: ..\build
+        token: ${{ github.token }}
+        generateReleaseNotes: true
